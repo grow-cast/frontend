@@ -1,0 +1,77 @@
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.google-button {
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  width: 300px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.divider {
+  margin: 10px 0;
+  font-size: 14px;
+  color: #888;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.signup-form input,
+.signup-form select {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #70ac10;
+  border-radius: 5px;
+}
+
+.signup-form select {
+  -webkit-appearance: none; /* 크롬에서 기본 스타일 제거 */
+  -moz-appearance: none; /* 파이어폭스에서 기본 스타일 제거 */
+  appearance: none; /* 기본 드롭다운 스타일 제거 */
+  background-color: white;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath d='M5 7l5 5 5-5z' fill='none' stroke='%23666' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+}
+
+.signup-button {
+  background-color: #ffdf61;
+  color: black;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-link {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.region-select {
+  width: 300px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #70ac10;
+  border-radius: 5px;
+  margin-bottom: 15px; /* 여백 추가 */
+}

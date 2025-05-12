@@ -1,0 +1,105 @@
+.result-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Pretendard", sans-serif;
+  color: #333;
+  padding: 2rem;
+}
+
+.result-grid {
+  display: flex;
+  gap: 2rem;
+  max-width: 900px;
+  width: 100%;
+}
+
+/* 좌측 노란 박스 */
+.left-box {
+  flex: 1;
+  background-color: #fff8dc;
+  border-left: 8px solid #ffdf61;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.region-year-box {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.info-box {
+  background-color: white;
+  border: 2px solid #70ac10;
+  border-radius: 8px;
+  padding: 1rem;
+  flex: 1;
+  text-align: center;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.info-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.info-value {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* 기후 시나리오 박스 (초록 테두리 + 흰 배경) */
+.scenario-box {
+  margin-top: 1.5rem;
+  background-color: white;
+  border: 2px solid #70ac10;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.arrow {
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+/* 우측 초록 박스 */
+.right-box {
+  flex: 1;
+  background-color: #f4fff4;
+  border-left: 8px solid #70ac10;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.crop-box {
+  background-color: white;
+  border: 2px solid #70ac10;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+/* 다시 조회하기 버튼 */
+.retry-wrap {
+  margin-top: 2rem;
+}
+
+.retry-btn {
+  background-color: white;
+  color: #724f28;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.retry-btn:hover {
+  background-color: #70ac10;
+  color: white;
+}

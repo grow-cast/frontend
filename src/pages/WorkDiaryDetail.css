@@ -1,0 +1,24 @@
+.public-diary-container {
+  max-width: 700px;
+  margin: auto;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.like-comment-section {
+  margin-top: 2rem;
+}
+
+.comment-box textarea {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.comment-box button {
+  margin-top: 0.5rem;
+}

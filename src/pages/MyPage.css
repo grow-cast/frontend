@@ -1,0 +1,155 @@
+/* 전체 레이아웃 좌우 배치 */
+.mypage-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: white;
+  min-height: 80vh;
+  gap: 2rem;
+}
+
+/* 왼쪽 날씨 박스 */
+.weather-box {
+  background-color: #eaf5e3;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 30px;
+  flex: 1; /* 추가: 좌측 공간 비율 */
+  height: fit-content; /* 콘텐츠 높이에 맞게 */
+}
+
+.date-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
+.weather-box .weather {
+  background-color: #70ac10;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.weather-info {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #444;
+}
+
+.weather-info p {
+  margin: 4px 0;
+}
+
+/* 오른쪽 콘텐츠 */
+.content-box {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* 섹션 박스 */
+
+.section-box {
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  width: 100%; /* 추가 */
+}
+
+/* 섹션 타이틀 + 버튼 같은 줄 */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.section-title {
+  background-color: #70ac10;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+.section-box button {
+  background-color: #ffdf61;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* 작물 로고 이미지 */
+.crop-logo {
+  width: 40px;
+  height: 0px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* 카드 텍스트 스타일 */
+.card-text h3 {
+  margin: 0 0 0.3rem;
+}
+
+.card-text p {
+  margin: 0.2rem 0;
+}
+
+/* 카드 스타일 (작물, 추천, 병해충) */
+.crop-card,
+.recommendation-card,
+.pest-card {
+  border: 2px solid #70ac10;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #f9fff9;
+}
+
+.pest-card {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left; /* 이미 있으나 재확인 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 추가: 내부 요소 왼쪽 정렬 */
+}
+
+.crop-card {
+  display: flex; /* 수평 정렬 */
+  align-items: center;
+  gap: 1rem;
+  border: 2px solid #70ac10;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #f9fff9;
+}
+
+.crop-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.crop-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.side-space {
+  flex: 1;
+}

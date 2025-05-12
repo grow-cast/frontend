@@ -1,0 +1,271 @@
+.diary-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-align: center;
+  color: #724f28;
+  font-family: "Pretendard", sans-serif;
+}
+
+.diary-container {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  padding: 1.5rem;
+  border: 1px solid #70ac10;
+  border-radius: 12px;
+  background-color: #f8f8f6;
+  font-family: "Pretendard", sans-serif;
+  color: #724f28;
+}
+
+.detail-container {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  padding: 1.5rem;
+}
+
+.form-title {
+  font-weight: bold;
+  margin: 1.2rem 0 0.5rem;
+  color: #724f28;
+  background-color: #add768;
+  padding-left: 0.3rem;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.title-input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.switch-label {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.toggle-switch {
+  width: 36px;
+  height: 18px;
+  background-color: #ccc;
+  border-radius: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.toggle-switch::before {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  top: 2px;
+  left: 2px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+input[type="checkbox"]:checked + .toggle-switch {
+  background-color: #70ac10;
+}
+
+input[type="checkbox"]:checked + .toggle-switch::before {
+  transform: translateX(18px);
+}
+
+.date-weather {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="number"],
+textarea {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  width: auto;
+  margin-bottom: 0.5rem;
+  margin-right: 0.3rem;
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+}
+
+.submit-button,
+.reply-button {
+  padding: 0.7rem 1.5rem;
+  background-color: white;
+  color: #724f28;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: block;
+  margin: 2rem auto 0;
+}
+
+.submit-button:hover,
+.reply-button:hover {
+  background-color: #70ac10;
+  color: white;
+}
+
+/* 이미지 업로드 input 전체 영역 */
+.image-upload-section {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 이미지 업로드 라벨 */
+.image-upload-section label {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+/* 파일 input 스타일링 */
+.image-upload-section input[type="file"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  width: fit-content;
+}
+
+/* 이미지 미리보기 */
+.image-preview {
+  margin-top: 10px;
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+}
+
+.comment-box h4 {
+  color: #724f28;
+  margin-bottom: 0.5rem;
+}
+
+.comment-box textarea {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  margin-top: 0.5rem;
+}
+
+.profile-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.3rem;
+}
+
+.nickname {
+  font-weight: bold;
+  color: #724f28;
+}
+
+.reply-item {
+  margin-left: 2rem;
+  background-color: #e7e7e7;
+  padding: 0.5rem;
+  border-radius: 6px;
+  margin-top: 0.3rem;
+}
+
+.like-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
+  margin-top: 1rem;
+}
+
+.vertical-line {
+  width: 2px;
+  height: 100%;
+  background-color: #ccc;
+  margin-right: 10px;
+  position: relative;
+  top: 0.5rem;
+}
+
+.comment-bubble {
+  position: relative;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+}
+
+.comment-left-line {
+  position: absolute;
+  width: 30px;
+  height: 100%;
+  border-left: 3px solid #70ac10;
+  border-bottom: 3px solid #70ac10;
+  top: 0;
+  left: -2rem;
+  border-radius: 0 0 0 15px;
+}
+
+.reply-wrapper {
+  position: relative;
+  margin-left: 3.5rem;
+  margin-top: 1rem;
+}
+
+.reply-line {
+  height: 2px;
+  background-color: #f0af2a;
+  width: 50px;
+  position: absolute;
+  top: 20px;
+  left: -55px;
+}
+
+.reply-main {
+  display: flex;
+  align-items: flex-start;
+}
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.nickname {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #724f28;
+}

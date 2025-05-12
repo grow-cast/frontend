@@ -1,0 +1,43 @@
+/* src/pages/Landing.css */
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.landing-button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+
+/* 로그인 버튼 - 예: 초록색 */
+.login-button {
+  background-color: #70ac10;
+}
+
+/* 회원가입 버튼 */
+.signup-button {
+  background-color: #ffdf61;
+  color: black;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.logo-icon {
+  width: auto;
+  height: 150px;
+  border-radius: 50%;
+  cursor: pointer;
+}

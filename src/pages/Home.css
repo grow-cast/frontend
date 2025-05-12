@@ -1,0 +1,218 @@
+.home-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: white;
+  min-height: 80vh;
+}
+
+.weather-box {
+  width: 200px;
+  background-color: #eaf5e3;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 30px;
+  flex: 1;
+}
+
+.date-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
+
+.weather-box .weather {
+  background-color: #70ac10;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.weather-info {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #444;
+}
+
+/* Home.css */
+.crop-list {
+  padding: 20px;
+  flex: 3;
+}
+
+.crop-list-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #70ac10;
+  color: white;
+  padding: 5px 30px;
+}
+
+.add-crop:hover {
+  background-color: #f0f0f0;
+}
+
+.crop-list-title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-crop {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  font-weight: bold;
+}
+
+.plus-icon {
+  font-size: 20px;
+  margin-right: 5px;
+  color: #ffdf61;
+}
+
+.crop-item {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.crop-item strong {
+  font-size: 1.2rem;
+}
+
+.crop-item p {
+  margin: 5px 0;
+}
+
+.add-crop {
+  font-size: 20px;
+  color: #ffdf61;
+  cursor: pointer;
+}
+
+.plus-icon {
+  font-size: 50px;
+}
+
+.crop-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fefefe;
+}
+
+.crop-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* 공통 버튼 스타일 */
+.crop-actions button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* 수정 버튼 색상 */
+.edit-button {
+  background-color: #ffdf61;
+  color: black;
+}
+.edit-button:hover {
+  opacity: 0.5;
+}
+
+/* 삭제 버튼 색상 */
+.delete-button {
+  background-color: #724f28;
+  color: white;
+}
+.delete-button:hover {
+  opacity: 0.5;
+}
+
+.pest-box {
+  width: 200px;
+  background-color: #ffffff;
+  border: 2px solid #70ac10;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 14px;
+  flex: 1;
+}
+
+.pest-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+  background-color: white !important;
+  color: black !important;
+}
+
+.pest-info {
+  color: gray;
+  text-align: center;
+}
+
+.crop-card {
+  border: 1px solid #ccc;
+  padding: 12px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.crop-card-content {
+  display: flex;
+  align-items: center;
+}
+
+/* 기존 이미지 크기 유지 */
+.crop-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+
+/* 이미지 없을 때 공간 확보용 박스 */
+.crop-image-placeholder {
+  width: 110px;
+  height: 110px;
+  margin-right: 16px;
+  border-radius: 8px;
+  background-color: transparent;
+  flex-shrink: 0;
+}
+
+.crop-text {
+  flex: 1;
+}
+
+.crop-actions {
+  margin-top: 8px;
+}
+
+.crop-actions button {
+  margin-right: 8px;
+}

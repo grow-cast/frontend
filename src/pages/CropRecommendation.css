@@ -1,0 +1,53 @@
+.recommendation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.recommendation-box {
+  background-color: #f9f9f9;
+  padding: 30px 40px;
+  border-radius: 20px;
+  border: 2px solid #70ac10;
+  text-align: center;
+  width: 320px;
+}
+
+.recommendation-box select {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.recommend-btn {
+  background-color: transparent;
+  color: #724f28;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.recommend-btn:hover {
+  background-color: #70ac10;
+  color: white;
+  border: none;
+}
+
+.recommend-btn:disabled {
+  cursor: not-allowed;
+}
+
+.result {
+  margin-top: 20px;
+}
+
+.result ul {
+  list-style: none;
+  padding: 0;
+}

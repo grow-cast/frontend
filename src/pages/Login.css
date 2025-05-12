@@ -1,0 +1,54 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.login-form input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #70ac10;
+}
+
+.google-button {
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc; /* 테두리 추가 */
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 300px;
+  margin-bottom: 10px;
+}
+
+.login-button {
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.divider {
+  margin: 10px 0;
+  font-size: 14px;
+  color: #888;
+}
+
+.signup-link {
+  margin-top: 10px;
+  font-size: 14px;
+}

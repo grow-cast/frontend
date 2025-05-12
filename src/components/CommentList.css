@@ -1,0 +1,93 @@
+.comment-box {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.comment-list {
+  list-style: none;
+  padding: 0;
+}
+
+.comment-bubble,
+.reply-wrapper {
+  margin-top: 1rem;
+  position: relative;
+}
+
+.comment-left-line,
+.reply-line {
+  position: absolute;
+  left: 16px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #ccc;
+}
+
+.comment-main,
+.reply-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-left: 2rem;
+  border: 2px solid #70ac10;
+  border-radius: 15px;
+  padding: 10px 15px;
+  background-color: white;
+  max-width: 500px;
+}
+
+.comment-main {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.comment-main:hover {
+  background-color: #f0f0f0;
+  border-radius: 12px;
+}
+
+.nickname {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.profile-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+textarea {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.submit-button,
+.reply-button {
+  margin-top: 0.5rem;
+  float: right;
+  border: none;
+  padding: 0.5rem 1rem;
+  background-color: #ffdf61;
+  color: #724f28;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: block;
+  margin: 2rem auto 0;
+}
+
+.submit-button:hover,
+.reply-button:hover {
+  background-color: #70ac10;
+  color: white;
+}
+
+.reply-input-wrapper {
+  margin-left: 3rem;
+  margin-top: 0.5rem;
+}

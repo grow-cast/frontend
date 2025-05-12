@@ -1,0 +1,103 @@
+.recommendation-container {
+  display: flex;
+  flex-direction: column; /* 세로 정렬 */
+  align-items: center;
+  min-height: 100vh;
+}
+
+.recommendation-box {
+  background-color: #f9f9f9;
+  padding: 30px 40px;
+  border-radius: 20px;
+  border: 2px solid #70ac10;
+  text-align: left;
+  width: 360px;
+}
+
+.recommendation-box h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.recommendation-box p {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.recommendation-box select,
+.recommendation-box input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.recommend-btn {
+  background-color: transparent;
+  color: #724f28;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+
+  transition: 0.3s ease;
+  width: 100%;
+}
+
+.recommend-btn:hover {
+  background-color: #70ac10;
+  color: white;
+}
+
+.recommend-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.result {
+  margin-top: 20px;
+}
+
+.result ul {
+  list-style: none;
+  padding: 0;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.row label {
+  flex: 1;
+}
+
+.row select,
+.row input {
+  flex: 1;
+}
+
+.top-title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.top-title h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.highlight-box {
+  background-color: #ffdf61;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #f0e68c;
+  margin-bottom: 10px;
+}

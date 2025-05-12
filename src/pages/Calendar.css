@@ -1,0 +1,201 @@
+/* 캘린더 전체 컨테이너 */
+.calendar-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+/* 기본 캘린더 스타일 */
+.react-calendar {
+  width: 100%;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 날짜 셀 스타일 */
+.react-calendar__tile {
+  position: relative;
+  padding: 1.8rem 0 !important;
+  height: 140px;
+  vertical-align: top;
+}
+
+/* 날짜 숫자 위치 조정 */
+.react-calendar__tile abbr {
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  font-size: 0.85rem;
+}
+
+/* 선택된 날짜 스타일 */
+.react-calendar__tile--active {
+  background-color: #70ac10;
+  color: white;
+  border-radius: 8px;
+}
+
+.react-calendar__tile--active:hover {
+  opacity: 0.7;
+}
+
+/* 네비게이션 라벨 (월/연도 표시) */
+.react-calendar__navigation__label {
+  color: #724f28;
+  font-weight: bold;
+}
+
+/* 요일 머리글 */
+.react-calendar__month-view__weekdays {
+  font-weight: bold;
+  color: white;
+  background-color: #70ac10;
+}
+
+/* 날짜 밑줄 제거 */
+.react-calendar abbr {
+  text-decoration: none;
+}
+
+/* 일지 제목 태그 스타일 */
+.diary-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 4px;
+  width: 100%;
+}
+
+.diary-tag {
+  border-radius: 8px;
+  padding: 2px 4px;
+  font-size: 10px;
+  margin: 1px 0;
+  color: white;
+  cursor: pointer;
+  height: 18px; /* 높이 고정 */
+  overflow: hidden; /* 내부 내용 넘침 방지 */
+  display: flex;
+  align-items: center; /* 텍스트 수직 정렬 */
+  min-width: 0;
+  width: 100%; /* 셀 너비에 맞추기 */
+}
+
+/* 색상 클래스 */
+.color-0 {
+  background-color: #70ac10;
+  color: #fff;
+}
+.color-1 {
+  background-color: #ffdf61;
+  color: #724f28;
+}
+.color-2 {
+  background-color: #724f28;
+  color: #fff;
+}
+.color-3 {
+  background-color: #539bdd;
+  color: #fff;
+}
+
+/* +N 표시용 */
+.diary-tag.more-count {
+  background-color: #ccc;
+  color: #000;
+  text-align: center;
+}
+
+.scroll-title {
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden; /* 수직 스크롤 방지 */
+  text-overflow: unset;
+  display: block;
+  width: 100%;
+  flex-grow: 1; /* 추가 */
+}
+
+.scroll-title::-webkit-scrollbar {
+  height: 3px;
+}
+
+.scroll-title::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+}
+
+/* "+N" 더보기 버튼 */
+.more-count {
+  background-color: #999;
+  text-align: center;
+  font-size: 10px;
+  color: white;
+  border-radius: 8px;
+}
+
+/* 모달 오버레이 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* 모달 본체 */
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  width: 320px;
+  max-height: 80vh;
+  border-radius: 12px;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h3 {
+  margin: 0 0 10px;
+  text-align: center;
+}
+
+/* 모달 일지 목록 */
+.modal-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modal-diary-item {
+  background-color: #f0f0f0;
+  margin-bottom: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.modal-diary-item:hover {
+  background-color: #dcdcdc;
+}
+
+/* 모달 닫기 버튼 */
+.close-button {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  border: none;
+  background: none;
+  font-size: 16px;
+  cursor: pointer;
+}

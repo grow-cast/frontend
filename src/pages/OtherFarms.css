@@ -1,0 +1,125 @@
+/* 전체 컨테이너 */
+.otherfarm-container {
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* 정렬 버튼 */
+.sort-buttons {
+  margin-bottom: 1rem;
+}
+
+.sort-buttons button {
+  margin-right: 0.5rem;
+  padding: 0.4rem 1rem;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+.sort-buttons button.active {
+  background-color: #70ac10;
+  color: white;
+  font-weight: bold;
+}
+
+/* 일지 목록 전체 */
+.diary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* 개별 일지 카드 */
+.diary-item {
+  background-color: #ffffff;
+  padding: 0.8rem;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 800px;
+  border: 2px solid #70ac10;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* 이미지 중앙 정렬 */
+  gap: 20px;
+  position: relative;
+  min-height: 100px;
+}
+
+/* 이미지 */
+.diary-item img {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* 이미지 없을 때 */
+.no-image {
+  width: 120px;
+  height: 120px;
+  background: #ccc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+}
+
+/* 일지 내용 텍스트 */
+.diary-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.diary-content h3 {
+  font-size: 1.2rem;
+  color: black;
+  margin-bottom: 6px;
+}
+
+.diary-content p {
+  font-size: 1rem;
+  margin: 2px 0;
+}
+
+.otherfarm-container {
+  padding: 1rem;
+}
+
+.sort-buttons {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: flex-end; /* 오른쪽 정렬 */
+}
+
+.rank-box {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #724f28;
+  width: 50px;
+  min-width: 50px;
+  text-align: center;
+  align-self: center;
+}
+
+.diary-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border: 2px solid #70ac10;
+}

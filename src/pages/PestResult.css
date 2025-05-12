@@ -1,0 +1,82 @@
+.pest-result-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: "Pretendard", sans-serif;
+  text-align: center;
+}
+
+.pest-title {
+  background-color: #70ac10;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 0.75rem;
+  border-radius: 8px;
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
+.pest-card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.pest-card {
+  border: 2px solid #70ac10;
+  border-radius: 1rem;
+  padding: 1.25rem 1rem;
+  width: 250px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pest-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.3rem;
+}
+
+.pest-latin {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 0.8rem;
+}
+
+.pest-level {
+  width: 100%;
+  background-color: #ffdf61;
+  color: #444;
+  font-weight: 600;
+  padding: 0.4rem 0;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.pest-description {
+  font-size: 0.95rem;
+  color: #333;
+  text-align: left;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+.pest-button {
+  margin-top: 3rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #724f28;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.pest-button:hover {
+  color: white;
+  background-color: #70ac10;
+}
