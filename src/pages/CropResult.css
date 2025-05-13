@@ -86,6 +86,8 @@
 /* 다시 조회하기 버튼 */
 .retry-wrap {
   margin-top: 2rem;
+  display: flex;
+  justify-content: space-between; /* 좌우 끝으로 정렬 */
 }
 
 .retry-btn {
@@ -97,9 +99,22 @@
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  text-align: center;
 }
 
 .retry-btn:hover {
   background-color: #70ac10;
   color: white;
+}
+
+/* 왼쪽 박스 가운데 위치 조정 */
+.left-btn {
+  left: 27%; /* 기존 25% → 27%로 미세 이동 */
+  transform: translateX(-50%);
+}
+
+/* 오른쪽 박스 가운데 위치 조정 */
+.right-btn {
+  left: 73%; /* 기존 75% → 73%로 미세 이동 */
+  transform: translateX(50%);
 }

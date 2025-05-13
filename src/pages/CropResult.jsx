@@ -1,18 +1,17 @@
-// src/pages/CropResult.jsx
-import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { useCallback, useEffect, useState } from "react";
 import "./CropResult.css";
 
 export default function CropResult() {
   const location = useLocation();
-  const navigate = useNavigate();
   const { region, year } = location.state || {};
+  const [crops, setCrops] = useState([]);
+  const [scenario, setScenario] = useState("");
 
   // 선택된 지역과 연도를 기반으로 동적으로 추천 작물 데이터 생성
   const generateCrops = (region, year) => {
     if (!region || !year) return [];
 
-    // 예시로, 지역과 연도에 따라 추천 작물을 생성
     const crops = [
       {
         name: "고구마",
@@ -31,12 +30,36 @@ export default function CropResult() {
       },
     ];
 
-    // 이곳에서 지역과 연도에 따른 논리 추가 가능
     return crops;
   };
 
-  // 동적으로 추천 작물 생성
-  const crops = generateCrops(region, year);
+  // 기후 시나리오만 갱신
+  const updateScenario = useCallback(() => {
+    const newScenario = (
+      <>
+        <p>
+          {year}년 {region}는 온난화로 여름 기온 상승과 강수량 증가가
+          예상됩니다.
+        </p>
+        <p className="arrow">↓</p>
+        <p>내습성 있고 수분 관리가 쉬운 작물 선택을 권장합니다.</p>
+      </>
+    );
+    setScenario(newScenario);
+  }, [region, year]);
+
+  // 작물 추천 리스트만 갱신
+  const updateCrops = () => {
+    const newCrops = generateCrops(region, year);
+    setCrops(newCrops); // 상태 업데이트
+  };
+
+  // 동적으로 추천 작물 생성 (페이지 로딩 시 실행)
+  useEffect(() => {
+    const newCrops = generateCrops(region, year);
+    setCrops(newCrops); // 처음에는 작물 리스트를 동적으로 생성
+    updateScenario(); // 기후 시나리오 초기화
+  }, [region, year, updateScenario]);
 
   // 로컬스토리지에 저장
   useEffect(() => {
@@ -57,11 +80,17 @@ export default function CropResult() {
     const updated = [newResult, ...existing];
     localStorage.setItem("cropRecommendations", JSON.stringify(updated));
 
-    console.log("✅ 저장 완료:", updated); // 디버깅 로그
+    console.log("저장 완료:", updated); // 디버깅 로그
   }, [region, year, crops]);
 
-  const handleRetry = () => {
-    navigate("/recommend-crop");
+  const handleRetryScenario = () => {
+    // 기후 시나리오만 다시 조회
+    updateScenario();
+  };
+
+  const handleRetryCrops = () => {
+    // 작물 리스트만 다시 조회
+    updateCrops();
   };
 
   return (
@@ -81,14 +110,7 @@ export default function CropResult() {
             </div>
           </div>
           <h3>기후 시나리오</h3>
-          <div className="scenario-box">
-            <p>
-              {year}년 {region}는 온난화로 여름 기온 상승과 강수량 증가가
-              예상됩니다.
-            </p>
-            <p className="arrow">↓</p>
-            <p>내습성 있고 수분 관리가 쉬운 작물 선택을 권장합니다.</p>
-          </div>
+          <div className="scenario-box">{scenario}</div>
         </div>
 
         {/* 우측 영역 */}
@@ -105,8 +127,11 @@ export default function CropResult() {
 
       {/* 버튼 */}
       <div className="retry-wrap">
-        <button className="retry-btn" onClick={handleRetry}>
-          다시 조회하기
+        <button className="retry-btn left-btn" onClick={handleRetryScenario}>
+          기후 시나리오 다시 조회
+        </button>
+        <button className="retry-btn right-btn" onClick={handleRetryCrops}>
+          작물 리스트 다시 조회
         </button>
       </div>
     </div>
