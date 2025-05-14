@@ -269,3 +269,15 @@ textarea {
   margin-bottom: 5px;
   color: #724f28;
 }
+
+.crop-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.crop-input-item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}

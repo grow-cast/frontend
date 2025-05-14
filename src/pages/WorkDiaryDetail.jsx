@@ -63,7 +63,8 @@ export default function PublicDiaryDetail() {
           <p>습도: {diary.weather.humidity}%</p>
           <p>풍속: {diary.weather.wind} m/s</p>
         </div>
-
+        <div className="form-title">작물</div>
+        <p>작물 이름: {diary.cropName}</p>
         <div className="form-title">생육 상태</div>
         {diary.imagePreview && (
           <img src={diary.imagePreview} alt="작물" className="image-preview" />

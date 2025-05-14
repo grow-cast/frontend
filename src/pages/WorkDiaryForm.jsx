@@ -1,3 +1,4 @@
+// 상단 import는 그대로 유지
 import "./WorkDiaryForm.css";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -12,9 +13,11 @@ export default function WorkDiaryForm() {
     ? new Date(dateFromCalendar).toISOString().split("T")[0]
     : new Date().toISOString().split("T")[0];
 
+  const [userCrops, setUserCrops] = useState([]);
   const [formData, setFormData] = useState({
     id: id ? Number(id) : Date.now(),
-    user: localStorage.getItem("username") || "익명 사용자", // 사용자 이름 저장
+    user: localStorage.getItem("username") || "익명 사용자",
+
     date: defaultDate,
     title: "",
     isPublic: false,
@@ -25,38 +28,26 @@ export default function WorkDiaryForm() {
       humidity: "",
       wind: "",
     },
+    cropName: "", // 추가된 필드
     growthImage: null,
     imagePreview: null,
     weedTime: "",
-    fertilizer: {
-      name: "",
-      time: "",
-      amount: "",
-    },
-    pesticide: {
-      name: "",
-      time: "",
-      amount: "",
-    },
+    fertilizer: { name: "", time: "", amount: "" },
+    pesticide: { name: "", time: "", amount: "" },
     growthNote: "",
     fieldVisits: "",
     todayWork: "",
     todoWork: "",
-    harvest: {
-      time: "",
-      amount: "",
-      storage: "",
-      quality: "",
-    },
+    harvest: { time: "", amount: "", storage: "", quality: "" },
   });
 
   useEffect(() => {
-    const diaries = JSON.parse(localStorage.getItem("diaries") || "[]");
+    const crops = JSON.parse(localStorage.getItem("crops")) || [];
+    setUserCrops(crops);
 
+    const diaries = JSON.parse(localStorage.getItem("diaries") || "[]");
     if (id) {
       const entry = diaries.find((d) => Number(d.id) === Number(id));
-
-      // title이 없거나 비어 있으면 접근 차단
       if (entry && entry.title && entry.title.trim() !== "") {
         setFormData({
           ...entry,
@@ -67,15 +58,9 @@ export default function WorkDiaryForm() {
         navigate("/calendar");
       }
     } else if (dateFromCalendar) {
-      setFormData((prev) => ({
-        ...prev,
-        date: dateFromCalendar,
-      }));
+      setFormData((prev) => ({ ...prev, date: dateFromCalendar }));
     } else if (defaultDate) {
-      setFormData((prev) => ({
-        ...prev,
-        date: defaultDate,
-      }));
+      setFormData((prev) => ({ ...prev, date: defaultDate }));
     }
   }, [id, dateFromCalendar, defaultDate, navigate]);
 
@@ -91,10 +76,7 @@ export default function WorkDiaryForm() {
     const { value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [key]: {
-        ...prev[key],
-        [field]: value,
-      },
+      [key]: { ...prev[key], [field]: value },
     }));
   };
 
@@ -119,7 +101,6 @@ export default function WorkDiaryForm() {
     }
 
     const diaries = JSON.parse(localStorage.getItem("diaries") || "[]");
-
     const diaryToSave = {
       ...formData,
       user: localStorage.getItem("username") || "익명 사용자",
@@ -173,7 +154,7 @@ export default function WorkDiaryForm() {
             <div>
               최고기온{" "}
               <input
-                type="text"
+                type="number"
                 placeholder="°C"
                 value={formData.weather.highTemp}
                 onChange={(e) => handleNestedChange(e, "weather", "highTemp")}
@@ -182,7 +163,7 @@ export default function WorkDiaryForm() {
             <div>
               최저기온{" "}
               <input
-                type="text"
+                type="number"
                 placeholder="°C"
                 value={formData.weather.lowTemp}
                 onChange={(e) => handleNestedChange(e, "weather", "lowTemp")}
@@ -191,7 +172,7 @@ export default function WorkDiaryForm() {
             <div>
               비{" "}
               <input
-                type="text"
+                type="number"
                 placeholder="%"
                 value={formData.weather.rain}
                 onChange={(e) => handleNestedChange(e, "weather", "rain")}
@@ -200,7 +181,7 @@ export default function WorkDiaryForm() {
             <div>
               습도{" "}
               <input
-                type="text"
+                type="number"
                 placeholder="%"
                 value={formData.weather.humidity}
                 onChange={(e) => handleNestedChange(e, "weather", "humidity")}
@@ -209,10 +190,41 @@ export default function WorkDiaryForm() {
             <div>
               풍속{" "}
               <input
-                type="text"
+                type="number"
                 placeholder="m/s"
                 value={formData.weather.wind}
                 onChange={(e) => handleNestedChange(e, "weather", "wind")}
+              />
+            </div>
+          </div>
+          <h3 className="form-title">작물</h3>
+          <div className="crop-input-wrapper">
+            <div className="crop-input-item">
+              작물 선택:{" "}
+              <select
+                name="cropName"
+                value={formData.cropName}
+                onChange={handleChange}
+              >
+                <option value="" disabled>
+                  작물을 선택하세요
+                </option>
+                {userCrops.map((crop, idx) => (
+                  <option key={idx} value={crop.name}>
+                    {crop.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="crop-input-item">
+              직접 입력:{" "}
+              <input
+                type="text"
+                name="cropName"
+                placeholder="등록한 작물이 없을 경우 입력해주세요"
+                value={formData.cropName}
+                onChange={handleChange}
               />
             </div>
           </div>
