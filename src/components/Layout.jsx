@@ -10,6 +10,10 @@ export default function Layout() {
 
   const handleLogout = () => {
     localStorage.removeItem("isAuthenticated");
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("nickname");
+    localStorage.removeItem("googleId");
     navigate("/"); // 로그아웃 시 랜딩 페이지로 이동
   };
 

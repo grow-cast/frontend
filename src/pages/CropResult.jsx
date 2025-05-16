@@ -1,139 +1,155 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
+import axios from "axios";
 import "./CropResult.css";
+import { REGION_CODE_MAP } from "../constants/regionCodes";
 
 export default function CropResult() {
   const location = useLocation();
   const { region, year } = location.state || {};
   const [crops, setCrops] = useState([]);
-  const [scenario, setScenario] = useState("");
+  const [scenarioText, setScenarioText] = useState("");
+  const [note, setNote] = useState("");
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-  // 선택된 지역과 연도를 기반으로 동적으로 추천 작물 데이터 생성
-  const generateCrops = (region, year) => {
-    if (!region || !year) return [];
+  const fetchCropRecommendations = useCallback(async () => {
+    if (!region || !year) {
+      setError("지역과 년도 정보가 없습니다.");
+      return;
+    }
 
-    const crops = [
-      {
-        name: "고구마",
-        description:
-          "토양 배수만 잘되면 습기에도 강하며 기온 상승에 따른 수량 증대가 기대됨.",
-      },
-      {
-        name: "옥수수",
-        description:
-          "고온에서도 잘 자라며 강수량 증가에도 견딜 수 있는 수분 적응력이 높음.",
-      },
-      {
-        name: "팥",
-        description:
-          "여름철 고온다습 환경에 잘 적응하며 단기간 재배 가능해 기후 리스크 분산에 유리함.",
-      },
-    ];
+    const yearNum = parseInt(year, 10);
+    if (isNaN(yearNum)) {
+      setError("년도 정보가 올바르지 않습니다.");
+      return;
+    }
 
-    return crops;
-  };
+    const regionCode = REGION_CODE_MAP[region];
+    if (!regionCode) {
+      setError(`선택한 지역(${region})에 대한 코드가 존재하지 않습니다.`);
+      return;
+    }
 
-  // 기후 시나리오만 갱신
-  const updateScenario = useCallback(() => {
-    const newScenario = (
-      <>
-        <p>
-          {year}년 {region}는 온난화로 여름 기온 상승과 강수량 증가가
-          예상됩니다.
-        </p>
-        <p className="arrow">↓</p>
-        <p>내습성 있고 수분 관리가 쉬운 작물 선택을 권장합니다.</p>
-      </>
-    );
-    setScenario(newScenario);
+    try {
+      const token = localStorage.getItem("token");
+
+      const response = await axios.post(
+        "http://34.47.85.36:3030/cropsRecommend",
+        {
+          regionCode: regionCode.toString(),
+          year: yearNum,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const recommended = response.data.cropRecommendation.map((item) => ({
+        name: item.recommendedCropName,
+        description: item.reason,
+      }));
+
+      setScenarioText(response.data.scenario);
+      setNote(response.data.recommendationNote);
+      setCrops(recommended);
+    } catch (err) {
+      if (err.response) {
+        setError(
+          `(${err.response.status}) 서버 응답 오류: ${
+            err.response.data?.message || "알 수 없는 에러"
+          }`
+        );
+      } else if (err.request) {
+        setError("서버로부터 응답을 받지 못했습니다. 네트워크를 확인하세요.");
+      } else {
+        setError("요청 중 오류 발생: " + err.message);
+      }
+    }
   }, [region, year]);
 
-  // 작물 추천 리스트만 갱신
-  const updateCrops = () => {
-    const newCrops = generateCrops(region, year);
-    setCrops(newCrops); // 상태 업데이트
-  };
-
-  // 동적으로 추천 작물 생성 (페이지 로딩 시 실행)
   useEffect(() => {
-    const newCrops = generateCrops(region, year);
-    setCrops(newCrops); // 처음에는 작물 리스트를 동적으로 생성
-    updateScenario(); // 기후 시나리오 초기화
-  }, [region, year, updateScenario]);
+    if (region && year) {
+      fetchCropRecommendations();
+    }
+  }, [region, year, fetchCropRecommendations]);
 
-  // 로컬스토리지에 저장
   useEffect(() => {
-    const newResult = {
-      region,
-      year,
-      crops,
-      date: new Date().toISOString(),
-    };
-    const existing =
-      JSON.parse(localStorage.getItem("cropRecommendations")) || [];
+    if (crops.length > 0) {
+      const newResult = {
+        region,
+        year,
+        crops,
+        date: new Date().toISOString(),
+      };
 
-    const isDuplicate = existing.some(
-      (item) => item.region === region && item.year === year
-    );
-    if (isDuplicate) return; // 중복이면 저장 안 함
+      const existing =
+        JSON.parse(localStorage.getItem("cropRecommendations")) || [];
 
-    const updated = [newResult, ...existing];
-    localStorage.setItem("cropRecommendations", JSON.stringify(updated));
+      const isDuplicate = existing.some(
+        (item) => item.region === region && item.year === year
+      );
+      if (isDuplicate) return;
 
-    console.log("저장 완료:", updated); // 디버깅 로그
+      const updated = [newResult, ...existing];
+      localStorage.setItem("cropRecommendations", JSON.stringify(updated));
+    }
   }, [region, year, crops]);
-
-  const handleRetryScenario = () => {
-    // 기후 시나리오만 다시 조회
-    updateScenario();
-  };
-
-  const handleRetryCrops = () => {
-    // 작물 리스트만 다시 조회
-    updateCrops();
-  };
 
   return (
     <div className="result-container">
-      <div className="result-grid">
-        {/* 좌측 영역 */}
-        <div className="left-box">
-          <h3>선택 지역 및 년도</h3>
-          <div className="region-year-box">
-            <div className="info-box">
-              <div className="info-title">입력 지역</div>
-              <div className="info-value">{region}</div>
+      {error ? (
+        <div className="error-message">
+          <p>{error}</p>
+          <button onClick={() => navigate("/recommend-crop")}>
+            처음으로 돌아가기
+          </button>
+        </div>
+      ) : crops.length === 0 ? (
+        <div className="loading-text">
+          추천 작물 정보를 불러오는 중입니다...
+        </div>
+      ) : (
+        <div className="result-grid">
+          {/* 좌측 영역 */}
+          <div className="left-box">
+            <h3>선택 지역 및 년도</h3>
+            <div className="region-year-box">
+              <div className="info-box">
+                <div className="info-title">입력 지역</div>
+                <div className="info-value">{region}</div>
+              </div>
+              <div className="info-box">
+                <div className="info-title">입력 년도</div>
+                <div className="info-value">{year}</div>
+              </div>
             </div>
-            <div className="info-box">
-              <div className="info-title">입력 년도</div>
-              <div className="info-value">{year}</div>
+            <h3>기후 시나리오</h3>
+            <div className="scenario-box">
+              <p>{scenarioText}</p>
+              <p className="arrow">↓</p>
+              <p>{note}</p>
             </div>
           </div>
-          <h3>기후 시나리오</h3>
-          <div className="scenario-box">{scenario}</div>
-        </div>
 
-        {/* 우측 영역 */}
-        <div className="right-box">
-          <h3>추천 작물 리스트</h3>
-          {crops.map((crop, index) => (
-            <div key={index} className="crop-box">
-              <strong>{crop.name}</strong>
-              <p>{crop.description}</p>
-            </div>
-          ))}
+          {/* 우측 영역 */}
+          <div className="right-box">
+            <h3>추천 작물 리스트</h3>
+            {crops.map((crop, index) => (
+              <div key={index} className="crop-box">
+                <strong>{crop.name}</strong>
+                <p>{crop.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-
-      {/* 버튼 */}
-      <div className="retry-wrap">
-        <button className="retry-btn left-btn" onClick={handleRetryScenario}>
-          기후 시나리오 다시 조회
-        </button>
-        <button className="retry-btn right-btn" onClick={handleRetryCrops}>
-          작물 리스트 다시 조회
-        </button>
-      </div>
+      )}
+      <button className="retry-btn" onClick={() => navigate("/recommend-crop")}>
+        다시 조회하기
+      </button>
     </div>
   );
 }

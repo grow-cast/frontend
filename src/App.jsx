@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 import Landing from "./pages/Landing";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
@@ -19,38 +20,41 @@ import OtherFarms from "./pages/OtherFarms";
 import WorkDiaryDetail from "./pages/WorkDiaryDetail";
 
 function App() {
+  const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
+    <GoogleOAuthProvider clientId={clientId}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
 
-        <Route
-          element={
-            <PrivateRoute>
-              <Layout />
-            </PrivateRoute>
-          }
-        >
-          <Route path="/main" element={<Home />} />
-          <Route path="/register-crop" element={<RegisterCrop />} />
-          <Route path="/recommend-crop" element={<CropRecommendation />} />
-          <Route path="/loading" element={<Loading />} />
-          <Route path="/crop-result" element={<CropResult />} />
-          <Route path="/pest-check" element={<PestCheck />} />
-          <Route path="/pest-loading" element={<PestLoading />} />
-          <Route path="/pest-result" element={<PestResult />} />
-          <Route path="/my-page" element={<MyPage />} />
-          <Route path="/calendar" element={<CalendarPage />} />
-          <Route path="/workdiaryform" element={<WorkDiaryForm />} />
-          <Route path="/workdiaryform/:id" element={<WorkDiaryForm />} />
-          <Route path="/other-farms" element={<OtherFarms />} />
-          <Route path="/workdiarydetail" element={<WorkDiaryDetail />} />
-          <Route path="/workdiarydetail/:id" element={<WorkDiaryDetail />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+          <Route
+            element={
+              <PrivateRoute>
+                <Layout />
+              </PrivateRoute>
+            }
+          >
+            <Route path="/main" element={<Home />} />
+            <Route path="/register-crop" element={<RegisterCrop />} />
+            <Route path="/recommend-crop" element={<CropRecommendation />} />
+            <Route path="/loading" element={<Loading />} />
+            <Route path="/crop-result" element={<CropResult />} />
+            <Route path="/pest-check" element={<PestCheck />} />
+            <Route path="/pest-loading" element={<PestLoading />} />
+            <Route path="/pest-result" element={<PestResult />} />
+            <Route path="/my-page" element={<MyPage />} />
+            <Route path="/calendar" element={<CalendarPage />} />
+            <Route path="/workdiaryform" element={<WorkDiaryForm />} />
+            <Route path="/workdiaryform/:id" element={<WorkDiaryForm />} />
+            <Route path="/other-farms" element={<OtherFarms />} />
+            <Route path="/workdiarydetail" element={<WorkDiaryDetail />} />
+            <Route path="/workdiarydetail/:id" element={<WorkDiaryDetail />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </GoogleOAuthProvider>
   );
 }
 

@@ -16,13 +16,7 @@ export default function Loading() {
     }
 
     const timer = setTimeout(() => {
-      const isDataAvailable = true;
-
-      if (isDataAvailable) {
-        navigate("/crop-result", { state: { region, year } });
-      } else {
-        setError(true);
-      }
+      navigate("/crop-result", { state: { region, year } });
     }, 2000);
 
     return () => clearTimeout(timer);
@@ -32,7 +26,7 @@ export default function Loading() {
     return (
       <div className="error-container">
         <p>추천 결과를 불러오지 못했습니다.</p>
-        <button onClick={() => navigate("recommend-crop")}>
+        <button onClick={() => navigate("/recommend-crop")}>
           처음으로 돌아가기
         </button>
       </div>
