@@ -48,13 +48,13 @@ export default function CropResult() {
         }
       );
 
-      const recommended = response.data.cropRecommendation.map((item) => ({
+      const recommended = response.data.cropsRecommendation.recommended.map((item) => ({
         name: item.recommendedCropName,
         description: item.reason,
       }));
 
-      setScenarioText(response.data.scenario);
-      setNote(response.data.recommendationNote);
+      setScenarioText(response.data.scenario.summary);
+      setNote(response.data.scenario.recommendationNote);
       setCrops(recommended);
     } catch (err) {
       if (err.response) {
